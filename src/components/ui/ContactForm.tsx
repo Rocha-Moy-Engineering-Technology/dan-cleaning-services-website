@@ -76,7 +76,8 @@ export default function ContactForm() {
         }),
       });
 
-      if (response.ok) {
+      const result = await response.json();
+      if (response.ok && result.success) {
         setStatus('success');
         setForm(INITIAL_FORM);
       } else {
