@@ -12,7 +12,7 @@ export default function Services() {
         subtitle="Professional cleaning solutions tailored to every space. Explore our full range of services below."
       />
 
-      <section className="px-6 py-20">
+      <section className="px-6 py-12 md:py-20">
         <SectionHeading
           title="What We Offer"
           subtitle="Choose the cleaning service that fits your needs."
@@ -24,7 +24,7 @@ export default function Services() {
         </div>
       </section>
 
-      <section className="bg-white px-6 py-16 text-center">
+      <section className="bg-white px-6 py-10 md:py-16 text-center">
         <h2 className="font-heading text-3xl font-bold text-brown-dark">
           Not Sure Which Service You Need?
         </h2>

@@ -7,6 +7,7 @@ interface HeroSectionProps {
   ctaText?: string;
   ctaLink?: string;
   bgClassName?: string;
+  backgroundImage?: string;
 }
 
 export default function HeroSection({
@@ -15,25 +16,48 @@ export default function HeroSection({
   ctaText,
   ctaLink,
   bgClassName = 'bg-tan',
+  backgroundImage,
 }: HeroSectionProps) {
+  const hasImage = Boolean(backgroundImage);
+
   return (
     <section
       className={cn(
-        'flex flex-col items-center justify-center px-6 py-24 text-center md:py-32',
-        bgClassName
+        'relative flex flex-col items-center justify-center px-6 py-16 text-center md:py-24',
+        hasImage
+          ? 'min-h-[50vh] md:min-h-[70vh] bg-cover bg-center'
+          : bgClassName
       )}
+      style={
+        hasImage ? { backgroundImage: `url(${backgroundImage})` } : undefined
+      }
     >
-      <h1 className="font-heading mx-auto max-w-4xl text-4xl font-bold text-brown-dark md:text-5xl lg:text-6xl">
-        {title}
-      </h1>
-      <p className="mx-auto mt-6 max-w-2xl text-lg text-brown-muted md:text-xl">
-        {subtitle}
-      </p>
-      {ctaText && ctaLink && (
-        <div className="mt-8">
-          <Button href={ctaLink}>{ctaText}</Button>
-        </div>
+      {hasImage && (
+        <div className="absolute inset-0 bg-brown-dark/60" aria-hidden />
       )}
+      <div className="relative z-10">
+        <h1
+          className={cn(
+            'font-heading mx-auto max-w-4xl text-3xl font-bold md:text-5xl lg:text-6xl',
+            hasImage ? 'text-white drop-shadow-lg' : 'text-brown-dark'
+          )}
+        >
+          {title}
+        </h1>
+        <p
+          className={cn(
+            'mx-auto mt-6 max-w-2xl text-lg md:text-xl',
+            hasImage ? 'text-white/90 drop-shadow' : 'text-brown-muted'
+          )}
+        >
+          {subtitle}
+        </p>
+        {ctaText && ctaLink && (
+          <div className="mt-8">
+            <Button href={ctaLink}>{ctaText}</Button>
+          </div>
+        )}
+      </div>
     </section>
   );
 }

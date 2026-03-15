@@ -14,7 +14,9 @@ export default function SectionHeading({
   light = false,
 }: SectionHeadingProps) {
   return (
-    <div className={cn('mx-auto mb-12 max-w-2xl text-center', className)}>
+    <div
+      className={cn('mx-auto mb-8 md:mb-12 max-w-2xl text-center', className)}
+    >
       <h2
         className={cn(
           'font-heading text-3xl font-bold md:text-4xl',

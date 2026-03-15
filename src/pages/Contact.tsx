@@ -11,8 +11,8 @@ export default function Contact() {
         subtitle="Ready for a spotless space? Reach out for a free quote or to learn more about our services."
       />
 
-      <section className="px-6 py-20">
-        <div className="mx-auto grid max-w-5xl gap-12 lg:grid-cols-2">
+      <section className="px-6 py-12 md:py-20">
+        <div className="mx-auto grid max-w-5xl gap-8 md:gap-12 lg:grid-cols-2">
           <div>
             <h2 className="font-heading text-2xl font-bold text-brown-dark">
               Send Us a Message

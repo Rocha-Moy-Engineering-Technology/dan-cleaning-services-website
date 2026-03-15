@@ -17,7 +17,7 @@ export default function ServiceDetail() {
     <>
       <HeroSection title={service.title} subtitle={service.description} />
 
-      <section className="px-6 py-20">
+      <section className="px-6 py-12 md:py-20">
         <SectionHeading
           title="What We Provide"
           subtitle="Our comprehensive approach ensures every detail is covered."
@@ -34,7 +34,7 @@ export default function ServiceDetail() {
         </div>
       </section>
 
-      <section className="bg-white px-6 py-20">
+      <section className="bg-white px-6 py-12 md:py-20">
         <SectionHeading
           title="What Is Included"
           subtitle="Every cleaning session covers these essential tasks."
@@ -51,7 +51,7 @@ export default function ServiceDetail() {
         </div>
       </section>
 
-      <section className="px-6 py-16 text-center">
+      <section className="px-6 py-10 md:py-16 text-center">
         <h2 className="font-heading text-3xl font-bold text-brown-dark">
           Ready to Book Your {service.title}?
         </h2>
