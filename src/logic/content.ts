@@ -61,6 +61,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
       'Deep cleaning for kitchens, bathrooms, and living areas',
       'Move-in and move-out cleaning',
       'Post-renovation cleanup',
+      'Laundry and linen washing service',
     ],
     included: [
       'Dusting all surfaces and fixtures',
@@ -96,13 +97,34 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     slug: 'hospitality',
     title: 'Hospitality Cleaning',
     description:
-      'Specialized cleaning for hotels, vacation rentals, and rental properties that keeps guests coming back.',
+      'Specialized cleaning for hotels and hospitality venues that keeps guests coming back.',
     accentColor: 'bg-gold',
     features: [
       'Hotel room turnover cleaning',
-      'Vacation rental changeover service',
-      'Rental property preparation',
+      'Conference room and meeting space cleaning',
+      'Guest floor hallway and elevator area cleaning',
       'Common area and lobby cleaning',
+    ],
+    included: [
+      'Linen changing and bed making',
+      'Full bathroom sanitization',
+      'Kitchen and appliance cleaning',
+      'Floor cleaning throughout',
+      'Surface dusting and polishing',
+      'Guest amenity restocking assistance',
+    ],
+  },
+  {
+    slug: 'rentals',
+    title: 'Rental & Airbnb Cleaning',
+    description:
+      'Turnover and deep cleaning for Airbnb listings, vacation homes, and rental properties — ready for every guest.',
+    accentColor: 'bg-gold',
+    features: [
+      'Airbnb listing turnover cleaning',
+      'Vacation home changeover service',
+      'Rental property preparation and refresh',
+      'Guest-ready deep cleaning',
     ],
     included: [
       'Linen changing and bed making',
@@ -117,7 +139,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     slug: 'specialty',
     title: 'Specialty Cleaning',
     description:
-      'Targeted deep cleaning services for carpets, upholstery, and windows that restore and refresh.',
+      'Targeted deep cleaning services for carpets, couches, sofas, and windows that restore and refresh.',
     accentColor: 'bg-orange',
     features: [
       'Carpet deep cleaning and stain removal',
