@@ -3,6 +3,7 @@ import HeroSection from '../components/ui/HeroSection';
 import SectionHeading from '../components/ui/SectionHeading';
 import Card from '../components/ui/Card';
 import Button from '../components/ui/Button';
+import QuoteEstimator from '../components/ui/QuoteEstimator';
 import { SERVICE_CATEGORIES } from '../logic/content';
 
 export default function ServiceDetail() {
@@ -50,6 +51,8 @@ export default function ServiceDetail() {
           </ul>
         </div>
       </section>
+
+      {service.slug === 'residential' && <QuoteEstimator />}
 
       <section className="px-6 py-10 md:py-16 text-center">
         <h2 className="font-heading text-3xl font-bold text-brown-dark">
