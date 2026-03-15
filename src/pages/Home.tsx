@@ -19,7 +19,7 @@ export default function Home() {
         subtitle={HERO.subtitle}
         ctaText={HERO.ctaText}
         ctaLink={HERO.ctaLink}
-        backgroundImage="/images/hero-charleston.jpg"
+        backgroundImage={`${import.meta.env.BASE_URL}images/hero-charleston.jpg`}
       />
 
       {/* Company Description */}
