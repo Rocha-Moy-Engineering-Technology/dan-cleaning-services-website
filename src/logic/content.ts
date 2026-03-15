@@ -177,6 +177,27 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
       'Window and glass surface cleaning',
     ],
   },
+  {
+    slug: 'special-services',
+    title: 'Special Services',
+    description:
+      'Decluttering, organizing, and clean-out services that transform overlooked spaces into functional areas.',
+    accentColor: 'bg-orange',
+    features: [
+      'Garage clean-outs and organizing',
+      'Closet organization and decluttering',
+      'Attic and basement clean-outs',
+      'Storage space organizing',
+    ],
+    included: [
+      'Sorting and categorizing items',
+      'Sweeping and mopping cleared areas',
+      'Surface wiping and dusting',
+      'Trash and debris hauling assistance',
+      'Donation pile organization',
+      'Final deep clean of the space',
+    ],
+  },
 ];
 
 export const PROCESS_STEPS: ProcessStepData[] = [
