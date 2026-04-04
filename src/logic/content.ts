@@ -5,7 +5,7 @@ import type {
   ContactInfo,
 } from '../types/content';
 
-export const COMPANY_NAME = 'Dan Cleaning Services';
+export const COMPANY_NAME = 'Harbor Point Cleaning';
 
 export const WEB3FORMS_ACCESS_KEY = 'e5cc09c0-15c5-4c1c-9c13-961382817e04';
 
@@ -19,7 +19,7 @@ export const HERO = {
 
 export const COMPANY_DESCRIPTION = {
   heading: 'A Cleaner Space, A Better Life',
-  text: 'At Dan Cleaning Services, we believe that a clean environment transforms the way you live and work. Our dedicated team of professionals delivers thorough, reliable cleaning tailored to your needs. From residential homes to commercial spaces, we treat every job with the care and attention it deserves.',
+  text: 'At Harbor Point Cleaning, we believe that a clean environment transforms the way you live and work. Our dedicated team of professionals delivers thorough, reliable cleaning tailored to your needs. From residential homes to commercial spaces, we treat every job with the care and attention it deserves.',
 };
 
 export const VALUE_PROPOSITIONS: ValueProposition[] = [
@@ -228,8 +228,8 @@ export const PROCESS_STEPS: ProcessStepData[] = [
 ];
 
 export const CONTACT_INFO: ContactInfo = {
-  phone: '(555) 123-4567',
-  email: 'info@dancleaningservices.com',
+  phone: '(210) 325-8900',
+  email: 'harborpointchs@gmail.com',
   hours: 'Mon - Sat: 7:00 AM - 7:00 PM',
   address: 'Serving the Greater Metro Area',
 };
