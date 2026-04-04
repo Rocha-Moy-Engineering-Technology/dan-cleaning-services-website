@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { cn } from '../../lib/utils';
+import { motion, AnimatePresence } from 'motion/react';
 import type {
   EstimatorSelections,
   EstimatorStepId,
@@ -19,6 +20,7 @@ const INITIAL_SELECTIONS: EstimatorSelections = {
 
 export default function QuoteEstimator() {
   const [currentStep, setCurrentStep] = useState(0);
+  const [direction, setDirection] = useState(1);
   const [selections, setSelections] =
     useState<EstimatorSelections>(INITIAL_SELECTIONS);
 
@@ -28,25 +30,29 @@ export default function QuoteEstimator() {
   function handleSelect(value: string) {
     const stepId: EstimatorStepId = ESTIMATOR_STEPS[currentStep].id;
     setSelections((prev) => ({ ...prev, [stepId]: value }));
+    setDirection(1);
     setCurrentStep((prev) => prev + 1);
   }
 
   function handleBack() {
+    setDirection(-1);
     setCurrentStep((prev) => prev - 1);
   }
 
   function handleStartOver() {
     setSelections(INITIAL_SELECTIONS);
+    setDirection(-1);
     setCurrentStep(0);
   }
 
   return (
     <section className="px-6 py-12 md:py-20">
       <div className="mx-auto max-w-xl">
-        <h2 className="mb-2 text-center font-heading text-3xl font-bold text-navy">
+        <h2 className="mb-2 text-center font-heading text-3xl font-semibold text-charcoal">
           Estimate Your Cleaning Cost
         </h2>
-        <p className="mb-8 text-center text-slate">
+        <span className="block mx-auto mt-2 mb-2 h-0.5 w-10 rounded-full bg-gold" />
+        <p className="mb-8 text-center text-warm-gray">
           Answer a few quick questions for a ballpark price.
         </p>
 
@@ -55,38 +61,48 @@ export default function QuoteEstimator() {
             <div
               key={step.id}
               className={cn(
-                'h-2.5 w-2.5 rounded-full transition-colors duration-200',
-                index < currentStep && 'bg-deep',
-                index === currentStep && !isComplete && 'bg-sky',
-                index > currentStep && 'bg-steel',
-                isComplete && 'bg-deep'
+                'h-2.5 w-2.5 rounded-full transition-colors duration-300',
+                index < currentStep && 'bg-forest',
+                index === currentStep && !isComplete && 'bg-sage',
+                index > currentStep && 'bg-sand',
+                isComplete && 'bg-forest',
               )}
             />
           ))}
         </div>
 
-        <div className="rounded-xl bg-ice p-6 shadow-md sm:p-8">
-          {isComplete ? (
-            <EstimatorResult
-              result={calculateEstimate(selections)}
-              onStartOver={handleStartOver}
-            />
-          ) : (
-            <>
-              <EstimatorStep
-                step={ESTIMATOR_STEPS[currentStep]}
-                selectedValue={selections[ESTIMATOR_STEPS[currentStep].id]}
-                onSelect={handleSelect}
-              />
-              {currentStep > 0 && (
-                <div className="mt-6 text-center">
-                  <Button variant="outline" onClick={handleBack}>
-                    Back
-                  </Button>
-                </div>
+        <div className="overflow-hidden rounded-2xl border border-sand/50 bg-cream p-6 shadow-sm sm:p-8">
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.div
+              key={currentStep}
+              initial={{ opacity: 0, x: direction * 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: direction * -40 }}
+              transition={{ duration: 0.25, ease: 'easeInOut' }}
+            >
+              {isComplete ? (
+                <EstimatorResult
+                  result={calculateEstimate(selections)}
+                  onStartOver={handleStartOver}
+                />
+              ) : (
+                <>
+                  <EstimatorStep
+                    step={ESTIMATOR_STEPS[currentStep]}
+                    selectedValue={selections[ESTIMATOR_STEPS[currentStep].id]}
+                    onSelect={handleSelect}
+                  />
+                  {currentStep > 0 && (
+                    <div className="mt-6 text-center">
+                      <Button variant="outline" onClick={handleBack}>
+                        Back
+                      </Button>
+                    </div>
+                  )}
+                </>
               )}
-            </>
-          )}
+            </motion.div>
+          </AnimatePresence>
         </div>
       </div>
     </section>

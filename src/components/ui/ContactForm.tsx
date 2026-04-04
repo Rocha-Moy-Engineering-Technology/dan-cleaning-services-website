@@ -50,7 +50,7 @@ export default function ContactForm() {
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
+    >,
   ) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
     setErrors((prev) => ({ ...prev, [e.target.name]: undefined }));
@@ -90,11 +90,11 @@ export default function ContactForm() {
 
   if (status === 'success') {
     return (
-      <div className="rounded-xl bg-white p-8 text-center shadow-md">
-        <p className="text-xl font-semibold text-deep">
+      <div className="rounded-2xl bg-white p-8 text-center border border-sand/50 shadow-sm">
+        <p className="text-xl font-semibold text-forest">
           Thank you for reaching out!
         </p>
-        <p className="mt-2 text-slate">
+        <p className="mt-2 text-warm-gray">
           We will get back to you within 24 hours.
         </p>
         <div className="mt-4">
@@ -107,7 +107,7 @@ export default function ContactForm() {
   }
 
   const inputBase =
-    'w-full rounded-lg border border-steel/50 bg-white px-4 py-3 text-navy placeholder:text-slate/50 focus:border-sky focus:outline-none focus:ring-1 focus:ring-sky';
+    'w-full rounded-xl border border-sand bg-cream/50 px-4 py-3 text-charcoal placeholder:text-warm-gray/50 focus:border-forest focus:outline-none focus:ring-1 focus:ring-forest transition-colors duration-200';
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5">

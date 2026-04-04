@@ -16,11 +16,11 @@ export default function EstimatorOptionCard({
       type="button"
       onClick={onClick}
       className={cn(
-        'w-full rounded-xl p-4 text-left font-semibold transition-colors duration-200',
-        'focus:outline-none focus:ring-2 focus:ring-sky/50 focus:ring-offset-2',
+        'w-full rounded-xl p-4 text-left font-semibold transition-all duration-200',
+        'focus:outline-none focus:ring-2 focus:ring-forest/50 focus:ring-offset-2',
         selected
-          ? 'bg-sky text-white shadow-md'
-          : 'bg-white text-navy shadow-md hover:border-sky hover:bg-sky/10'
+          ? 'bg-forest text-white shadow-md'
+          : 'border border-sand bg-white text-charcoal hover:border-sage hover:bg-sage/10',
       )}
     >
       {label}

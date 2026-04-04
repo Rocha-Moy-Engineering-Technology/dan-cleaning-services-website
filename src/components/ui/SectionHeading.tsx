@@ -19,15 +19,22 @@ export default function SectionHeading({
     >
       <h2
         className={cn(
-          'font-heading text-3xl font-bold md:text-4xl',
-          light ? 'text-white' : 'text-navy'
+          'font-heading text-3xl font-semibold md:text-4xl lg:text-5xl',
+          light ? 'text-white' : 'text-charcoal',
         )}
       >
         {title}
       </h2>
+      <span className={cn(
+        'block mx-auto mt-4 h-0.5 w-12 rounded-full',
+        light ? 'bg-gold/70' : 'bg-gold',
+      )} />
       {subtitle && (
         <p
-          className={cn('mt-4 text-lg', light ? 'text-white/80' : 'text-slate')}
+          className={cn(
+            'mt-4 text-lg',
+            light ? 'text-white/80' : 'text-warm-gray',
+          )}
         >
           {subtitle}
         </p>
