@@ -5,7 +5,6 @@ import ProcessStep from '../components/ui/ProcessStep';
 import Button from '../components/ui/Button';
 import {
   HERO,
-  COMPANY_DESCRIPTION,
   VALUE_PROPOSITIONS,
   SERVICE_CATEGORIES,
   PROCESS_STEPS,
@@ -21,18 +20,6 @@ export default function Home() {
         ctaLink={HERO.ctaLink}
         backgroundImage={`${import.meta.env.BASE_URL}images/hero-charleston.jpg`}
       />
-
-      {/* Company Description */}
-      <section className="px-6 py-12 md:py-20">
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="font-heading text-3xl font-bold text-navy md:text-4xl">
-            {COMPANY_DESCRIPTION.heading}
-          </h2>
-          <p className="mt-6 text-lg leading-relaxed text-slate">
-            {COMPANY_DESCRIPTION.text}
-          </p>
-        </div>
-      </section>
 
       {/* Value Propositions */}
       <section className="bg-white px-6 py-12 md:py-20">

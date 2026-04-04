@@ -26,6 +26,7 @@ export default function Footer() {
                 <li key={link.path}>
                   <Link
                     to={link.path}
+                    onClick={() => window.scrollTo(0, 0)}
                     className="text-sm text-white/70 transition-colors hover:text-white"
                   >
                     {link.label}
@@ -36,6 +37,7 @@ export default function Footer() {
                 <li key={service.slug}>
                   <Link
                     to={`/services/${service.slug}`}
+                    onClick={() => window.scrollTo(0, 0)}
                     className="text-sm text-white/70 transition-colors hover:text-white"
                   >
                     {service.title}

@@ -17,11 +17,6 @@ export const HERO = {
   ctaLink: '/contact',
 };
 
-export const COMPANY_DESCRIPTION = {
-  heading: 'A Cleaner Space, A Better Life',
-  text: 'At Harbor Point Cleaning, we believe that a clean environment transforms the way you live and work. Our dedicated team of professionals delivers thorough, reliable cleaning tailored to your needs. From residential homes to commercial spaces, we treat every job with the care and attention it deserves.',
-};
-
 export const VALUE_PROPOSITIONS: ValueProposition[] = [
   {
     title: 'Trusted Professionals',
