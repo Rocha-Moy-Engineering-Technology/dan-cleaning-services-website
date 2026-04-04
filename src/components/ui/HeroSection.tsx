@@ -15,7 +15,7 @@ export default function HeroSection({
   subtitle,
   ctaText,
   ctaLink,
-  bgClassName = 'bg-tan',
+  bgClassName = 'bg-steel',
   backgroundImage,
 }: HeroSectionProps) {
   const hasImage = Boolean(backgroundImage);
@@ -32,14 +32,12 @@ export default function HeroSection({
         hasImage ? { backgroundImage: `url(${backgroundImage})` } : undefined
       }
     >
-      {hasImage && (
-        <div className="absolute inset-0 bg-brown-dark/60" aria-hidden />
-      )}
+      {hasImage && <div className="absolute inset-0 bg-navy/60" aria-hidden />}
       <div className="relative z-10">
         <h1
           className={cn(
             'font-heading mx-auto max-w-4xl text-3xl font-bold md:text-5xl lg:text-6xl',
-            hasImage ? 'text-white drop-shadow-lg' : 'text-brown-dark'
+            hasImage ? 'text-white drop-shadow-lg' : 'text-navy'
           )}
         >
           {title}
@@ -47,7 +45,7 @@ export default function HeroSection({
         <p
           className={cn(
             'mx-auto mt-6 max-w-2xl text-lg md:text-xl',
-            hasImage ? 'text-white/90 drop-shadow' : 'text-brown-muted'
+            hasImage ? 'text-white/90 drop-shadow' : 'text-slate'
           )}
         >
           {subtitle}

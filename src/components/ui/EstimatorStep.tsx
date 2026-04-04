@@ -14,7 +14,7 @@ export default function EstimatorStep({
 }: EstimatorStepProps) {
   return (
     <div>
-      <h3 className="mb-6 text-center font-heading text-2xl font-bold text-brown-dark">
+      <h3 className="mb-6 text-center font-heading text-2xl font-bold text-navy">
         {step.title}
       </h3>
       <div className="mx-auto grid max-w-md gap-3 sm:grid-cols-2">

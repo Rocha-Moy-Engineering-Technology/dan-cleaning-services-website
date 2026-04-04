@@ -16,11 +16,11 @@ export default function ServiceCategoryCard({
     >
       <div className={cn('h-2 rounded-t-xl', service.accentColor)} />
       <div className="p-6">
-        <h3 className="font-heading text-xl font-bold text-brown-dark group-hover:text-orange">
+        <h3 className="font-heading text-xl font-bold text-navy group-hover:text-sky">
           {service.title}
         </h3>
-        <p className="mt-2 text-brown-muted">{service.description}</p>
-        <span className="mt-4 inline-block font-semibold text-orange">
+        <p className="mt-2 text-slate">{service.description}</p>
+        <span className="mt-4 inline-block font-semibold text-sky">
           Learn More &rarr;
         </span>
       </div>

@@ -12,13 +12,13 @@ export default function EstimatorResult({
 }: EstimatorResultProps) {
   return (
     <div className="text-center">
-      <h3 className="font-heading text-2xl font-bold text-brown-dark">
+      <h3 className="font-heading text-2xl font-bold text-navy">
         Your Estimated Price
       </h3>
-      <p className="mt-6 font-heading text-5xl font-bold text-orange">
+      <p className="mt-6 font-heading text-5xl font-bold text-sky">
         ${result.low} &ndash; ${result.high}
       </p>
-      <p className="mt-3 text-sm text-brown-muted">
+      <p className="mt-3 text-sm text-slate">
         This is a ballpark estimate. Final pricing may vary based on your
         home&rsquo;s specific needs.
       </p>

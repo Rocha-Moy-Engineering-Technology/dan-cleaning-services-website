@@ -14,10 +14,10 @@ export default function Contact() {
       <section className="px-6 py-12 md:py-20">
         <div className="mx-auto grid max-w-5xl gap-8 md:gap-12 lg:grid-cols-2">
           <div>
-            <h2 className="font-heading text-2xl font-bold text-brown-dark">
+            <h2 className="font-heading text-2xl font-bold text-navy">
               Send Us a Message
             </h2>
-            <p className="mb-6 mt-2 text-brown-muted">
+            <p className="mb-6 mt-2 text-slate">
               Fill out the form below and we will get back to you within 24
               hours.
             </p>
@@ -26,34 +26,34 @@ export default function Contact() {
 
           <div className="space-y-6">
             <Card>
-              <h3 className="font-heading text-xl font-bold text-brown-dark">
+              <h3 className="font-heading text-xl font-bold text-navy">
                 Contact Information
               </h3>
-              <ul className="mt-4 space-y-3 text-brown-muted">
+              <ul className="mt-4 space-y-3 text-slate">
                 <li>
-                  <span className="font-semibold text-brown-dark">Phone:</span>{' '}
+                  <span className="font-semibold text-navy">Phone:</span>{' '}
                   {CONTACT_INFO.phone}
                 </li>
                 <li>
-                  <span className="font-semibold text-brown-dark">Email:</span>{' '}
+                  <span className="font-semibold text-navy">Email:</span>{' '}
                   {CONTACT_INFO.email}
                 </li>
                 <li>
-                  <span className="font-semibold text-brown-dark">Hours:</span>{' '}
+                  <span className="font-semibold text-navy">Hours:</span>{' '}
                   {CONTACT_INFO.hours}
                 </li>
                 <li>
-                  <span className="font-semibold text-brown-dark">Area:</span>{' '}
+                  <span className="font-semibold text-navy">Area:</span>{' '}
                   {CONTACT_INFO.address}
                 </li>
               </ul>
             </Card>
 
             <Card>
-              <h3 className="font-heading text-xl font-bold text-brown-dark">
+              <h3 className="font-heading text-xl font-bold text-navy">
                 Join Our Team
               </h3>
-              <p className="mt-3 text-brown-muted">
+              <p className="mt-3 text-slate">
                 Interested in joining {COMPANY_NAME}? We are always looking for
                 dedicated, detail-oriented cleaning professionals. Send us a
                 message with &ldquo;Career Inquiry&rdquo; in the subject and we

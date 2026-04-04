@@ -91,10 +91,10 @@ export default function ContactForm() {
   if (status === 'success') {
     return (
       <div className="rounded-xl bg-white p-8 text-center shadow-md">
-        <p className="text-xl font-semibold text-teal">
+        <p className="text-xl font-semibold text-deep">
           Thank you for reaching out!
         </p>
-        <p className="mt-2 text-brown-muted">
+        <p className="mt-2 text-slate">
           We will get back to you within 24 hours.
         </p>
         <div className="mt-4">
@@ -107,7 +107,7 @@ export default function ContactForm() {
   }
 
   const inputBase =
-    'w-full rounded-lg border border-tan/50 bg-white px-4 py-3 text-brown-dark placeholder:text-brown-muted/50 focus:border-orange focus:outline-none focus:ring-1 focus:ring-orange';
+    'w-full rounded-lg border border-steel/50 bg-white px-4 py-3 text-navy placeholder:text-slate/50 focus:border-sky focus:outline-none focus:ring-1 focus:ring-sky';
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5">

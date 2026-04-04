@@ -20,17 +20,14 @@ export default function SectionHeading({
       <h2
         className={cn(
           'font-heading text-3xl font-bold md:text-4xl',
-          light ? 'text-white' : 'text-brown-dark'
+          light ? 'text-white' : 'text-navy'
         )}
       >
         {title}
       </h2>
       {subtitle && (
         <p
-          className={cn(
-            'mt-4 text-lg',
-            light ? 'text-white/80' : 'text-brown-muted'
-          )}
+          className={cn('mt-4 text-lg', light ? 'text-white/80' : 'text-slate')}
         >
           {subtitle}
         </p>

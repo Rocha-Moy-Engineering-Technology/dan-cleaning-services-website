@@ -55,7 +55,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     title: 'Residential Cleaning',
     description:
       'Comprehensive home cleaning services that keep your living spaces fresh, healthy, and inviting.',
-    accentColor: 'bg-orange',
+    accentColor: 'bg-sky',
     features: [
       'Regular housekeeping and maintenance cleaning',
       'Deep cleaning for kitchens, bathrooms, and living areas',
@@ -77,7 +77,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     title: 'Commercial Cleaning',
     description:
       'Professional office and workspace cleaning that creates a productive, healthy environment for your team.',
-    accentColor: 'bg-teal',
+    accentColor: 'bg-deep',
     features: [
       'Daily or weekly office cleaning',
       'Breakroom and kitchen area cleaning',
@@ -98,7 +98,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     title: 'Hospitality Cleaning',
     description:
       'Specialized cleaning for hotels and hospitality venues that keeps guests coming back.',
-    accentColor: 'bg-gold',
+    accentColor: 'bg-cyan',
     features: [
       'Hotel room turnover cleaning',
       'Conference room and meeting space cleaning',
@@ -119,7 +119,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     title: 'Rental & Airbnb Cleaning',
     description:
       'Turnover and deep cleaning for Airbnb listings, vacation homes, and rental properties — ready for every guest.',
-    accentColor: 'bg-gold',
+    accentColor: 'bg-cyan',
     features: [
       'Airbnb listing turnover cleaning',
       'Vacation home changeover service',
@@ -140,7 +140,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     title: 'Specialty Cleaning',
     description:
       'Targeted deep cleaning services for carpets, couches, sofas, and windows that restore and refresh.',
-    accentColor: 'bg-orange',
+    accentColor: 'bg-sky',
     features: [
       'Carpet deep cleaning and stain removal',
       'Couch and sofa upholstery cleaning',
@@ -161,7 +161,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     title: 'Event & Venue Cleaning',
     description:
       'Pre-event and post-event cleaning for restaurants, event spaces, and venues of all sizes.',
-    accentColor: 'bg-teal',
+    accentColor: 'bg-deep',
     features: [
       'Pre-event space preparation',
       'Post-event deep cleaning',
@@ -182,7 +182,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     title: 'Special Services',
     description:
       'Decluttering, organizing, and clean-out services that transform overlooked spaces into functional areas.',
-    accentColor: 'bg-orange',
+    accentColor: 'bg-sky',
     features: [
       'Garage clean-outs and organizing',
       'Closet organization and decluttering',

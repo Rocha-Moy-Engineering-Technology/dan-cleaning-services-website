@@ -27,8 +27,8 @@ export default function ServiceDetail() {
           {service.features.map((feature) => (
             <Card key={feature}>
               <div className="flex items-start gap-3">
-                <span className="mt-0.5 text-orange">&#10003;</span>
-                <p className="text-brown-muted">{feature}</p>
+                <span className="mt-0.5 text-sky">&#10003;</span>
+                <p className="text-slate">{feature}</p>
               </div>
             </Card>
           ))}
@@ -44,8 +44,8 @@ export default function ServiceDetail() {
           <ul className="space-y-3">
             {service.included.map((item) => (
               <li key={item} className="flex items-start gap-3">
-                <span className="mt-0.5 font-bold text-teal">&#10003;</span>
-                <span className="text-brown-muted">{item}</span>
+                <span className="mt-0.5 font-bold text-deep">&#10003;</span>
+                <span className="text-slate">{item}</span>
               </li>
             ))}
           </ul>
@@ -55,10 +55,10 @@ export default function ServiceDetail() {
       {service.slug === 'residential' && <QuoteEstimator />}
 
       <section className="px-6 py-10 md:py-16 text-center">
-        <h2 className="font-heading text-3xl font-bold text-brown-dark">
+        <h2 className="font-heading text-3xl font-bold text-navy">
           Ready to Book Your {service.title}?
         </h2>
-        <p className="mx-auto mt-4 max-w-xl text-brown-muted">
+        <p className="mx-auto mt-4 max-w-xl text-slate">
           Get in touch for a free quote. We will work with you to create the
           perfect cleaning plan.
         </p>

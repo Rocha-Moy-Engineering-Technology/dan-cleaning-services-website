@@ -43,10 +43,10 @@ export default function QuoteEstimator() {
   return (
     <section className="px-6 py-12 md:py-20">
       <div className="mx-auto max-w-xl">
-        <h2 className="mb-2 text-center font-heading text-3xl font-bold text-brown-dark">
+        <h2 className="mb-2 text-center font-heading text-3xl font-bold text-navy">
           Estimate Your Cleaning Cost
         </h2>
-        <p className="mb-8 text-center text-brown-muted">
+        <p className="mb-8 text-center text-slate">
           Answer a few quick questions for a ballpark price.
         </p>
 
@@ -56,16 +56,16 @@ export default function QuoteEstimator() {
               key={step.id}
               className={cn(
                 'h-2.5 w-2.5 rounded-full transition-colors duration-200',
-                index < currentStep && 'bg-teal',
-                index === currentStep && !isComplete && 'bg-orange',
-                index > currentStep && 'bg-tan',
-                isComplete && 'bg-teal'
+                index < currentStep && 'bg-deep',
+                index === currentStep && !isComplete && 'bg-sky',
+                index > currentStep && 'bg-steel',
+                isComplete && 'bg-deep'
               )}
             />
           ))}
         </div>
 
-        <div className="rounded-xl bg-cream p-6 shadow-md sm:p-8">
+        <div className="rounded-xl bg-ice p-6 shadow-md sm:p-8">
           {isComplete ? (
             <EstimatorResult
               result={calculateEstimate(selections)}

@@ -25,10 +25,10 @@ export default function Home() {
       {/* Company Description */}
       <section className="px-6 py-12 md:py-20">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="font-heading text-3xl font-bold text-brown-dark md:text-4xl">
+          <h2 className="font-heading text-3xl font-bold text-navy md:text-4xl">
             {COMPANY_DESCRIPTION.heading}
           </h2>
-          <p className="mt-6 text-lg leading-relaxed text-brown-muted">
+          <p className="mt-6 text-lg leading-relaxed text-slate">
             {COMPANY_DESCRIPTION.text}
           </p>
         </div>
@@ -44,10 +44,10 @@ export default function Home() {
           {VALUE_PROPOSITIONS.map((vp) => (
             <div key={vp.title} className="text-center">
               <div className="text-4xl">{vp.icon}</div>
-              <h3 className="font-heading mt-3 text-lg font-bold text-brown-dark">
+              <h3 className="font-heading mt-3 text-lg font-bold text-navy">
                 {vp.title}
               </h3>
-              <p className="mt-2 text-sm text-brown-muted">{vp.description}</p>
+              <p className="mt-2 text-sm text-slate">{vp.description}</p>
             </div>
           ))}
         </div>
@@ -81,10 +81,10 @@ export default function Home() {
 
       {/* CTA */}
       <section className="px-6 py-12 md:py-20 text-center">
-        <h2 className="font-heading text-3xl font-bold text-brown-dark md:text-4xl">
+        <h2 className="font-heading text-3xl font-bold text-navy md:text-4xl">
           Ready for a Spotless Space?
         </h2>
-        <p className="mx-auto mt-4 max-w-xl text-lg text-brown-muted">
+        <p className="mx-auto mt-4 max-w-xl text-lg text-slate">
           Contact us today for a free, no-obligation quote. We would love to
           hear from you.
         </p>

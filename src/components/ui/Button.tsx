@@ -12,10 +12,10 @@ interface ButtonProps {
 }
 
 const VARIANT_STYLES = {
-  primary: 'bg-orange text-white hover:bg-orange/90 focus:ring-orange/50',
-  secondary: 'bg-teal text-white hover:bg-teal/90 focus:ring-teal/50',
+  primary: 'bg-sky text-white hover:bg-sky/90 focus:ring-sky/50',
+  secondary: 'bg-deep text-white hover:bg-deep/90 focus:ring-deep/50',
   outline:
-    'border-2 border-brown-dark text-brown-dark hover:bg-brown-dark hover:text-white focus:ring-brown-dark/50',
+    'border-2 border-navy text-navy hover:bg-navy hover:text-white focus:ring-navy/50',
 } as const;
 
 export default function Button({

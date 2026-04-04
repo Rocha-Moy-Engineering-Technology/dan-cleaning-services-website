@@ -25,10 +25,10 @@ export default function Services() {
       </section>
 
       <section className="bg-white px-6 py-10 md:py-16 text-center">
-        <h2 className="font-heading text-3xl font-bold text-brown-dark">
+        <h2 className="font-heading text-3xl font-bold text-navy">
           Not Sure Which Service You Need?
         </h2>
-        <p className="mx-auto mt-4 max-w-xl text-brown-muted">
+        <p className="mx-auto mt-4 max-w-xl text-slate">
           Contact us and we will help you find the perfect cleaning solution for
           your space.
         </p>
