@@ -2,33 +2,37 @@ import { useState } from 'react';
 import { cn } from '../../lib/utils';
 import { motion, AnimatePresence } from 'motion/react';
 import type {
-  EstimatorSelections,
-  EstimatorStepId,
+  EstimatorStepConfig,
+  CalculateFn,
 } from '../../types/estimator';
-import { ESTIMATOR_STEPS, calculateEstimate } from '../../logic/estimator';
 import EstimatorStep from './EstimatorStep';
 import EstimatorResult from './EstimatorResult';
 import Button from './Button';
 
-const INITIAL_SELECTIONS: EstimatorSelections = {
-  bedrooms: '',
-  bathrooms: '',
-  squareFootage: '',
-  cleaningType: '',
-  frequency: '',
-};
+interface QuoteEstimatorProps {
+  steps: EstimatorStepConfig[];
+  calculateFn: CalculateFn;
+}
 
-export default function QuoteEstimator() {
+export default function QuoteEstimator({
+  steps,
+  calculateFn,
+}: QuoteEstimatorProps) {
   const [currentStep, setCurrentStep] = useState(0);
   const [direction, setDirection] = useState(1);
-  const [selections, setSelections] =
-    useState<EstimatorSelections>(INITIAL_SELECTIONS);
+  const [selections, setSelections] = useState<Record<string, string>>(() => {
+    const initial: Record<string, string> = {};
+    for (const step of steps) {
+      initial[step.id] = '';
+    }
+    return initial;
+  });
 
-  const totalSteps = ESTIMATOR_STEPS.length;
+  const totalSteps = steps.length;
   const isComplete = currentStep >= totalSteps;
 
   function handleSelect(value: string) {
-    const stepId: EstimatorStepId = ESTIMATOR_STEPS[currentStep].id;
+    const stepId = steps[currentStep].id;
     setSelections((prev) => ({ ...prev, [stepId]: value }));
     setDirection(1);
     setCurrentStep((prev) => prev + 1);
@@ -40,7 +44,11 @@ export default function QuoteEstimator() {
   }
 
   function handleStartOver() {
-    setSelections(INITIAL_SELECTIONS);
+    const initial: Record<string, string> = {};
+    for (const step of steps) {
+      initial[step.id] = '';
+    }
+    setSelections(initial);
     setDirection(-1);
     setCurrentStep(0);
   }
@@ -57,7 +65,7 @@ export default function QuoteEstimator() {
         </p>
 
         <div className="mb-8 flex items-center justify-center gap-2">
-          {ESTIMATOR_STEPS.map((step, index) => (
+          {steps.map((step, index) => (
             <div
               key={step.id}
               className={cn(
@@ -82,14 +90,14 @@ export default function QuoteEstimator() {
             >
               {isComplete ? (
                 <EstimatorResult
-                  result={calculateEstimate(selections)}
+                  result={calculateFn(selections)}
                   onStartOver={handleStartOver}
                 />
               ) : (
                 <>
                   <EstimatorStep
-                    step={ESTIMATOR_STEPS[currentStep]}
-                    selectedValue={selections[ESTIMATOR_STEPS[currentStep].id]}
+                    step={steps[currentStep]}
+                    selectedValue={selections[steps[currentStep].id]}
                     onSelect={handleSelect}
                   />
                   {currentStep > 0 && (

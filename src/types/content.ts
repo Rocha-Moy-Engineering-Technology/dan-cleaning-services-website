@@ -1,3 +1,5 @@
+export type ServiceCategoryType = 'home' | 'commercial';
+
 export interface ServiceCategory {
   slug: string;
   title: string;
@@ -5,6 +7,8 @@ export interface ServiceCategory {
   accentColor: string;
   features: string[];
   included: string[];
+  category: ServiceCategoryType;
+  hasCalculator: boolean;
 }
 
 export interface ValueProposition {

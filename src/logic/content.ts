@@ -13,7 +13,7 @@ export const HERO = {
   title: 'Premier Cleaning Solutions',
   subtitle:
     'Professional cleaning services for homes, offices, and commercial spaces. We bring spotless results with personalized care.',
-  ctaText: 'Get a Free Quote',
+  ctaText: 'Get a Free Instant Quote',
   ctaLink: '/contact',
 };
 
@@ -44,13 +44,17 @@ export const VALUE_PROPOSITIONS: ValueProposition[] = [
   },
 ];
 
+// Row 1: Home & Personal (with calculators)
+// Row 2: Commercial & Corporate (contact for quote)
 export const SERVICE_CATEGORIES: ServiceCategory[] = [
   {
     slug: 'residential',
     title: 'Residential Cleaning',
     description:
       'Comprehensive home cleaning services that keep your living spaces fresh, healthy, and inviting.',
-    accentColor: 'bg-sky',
+    accentColor: 'bg-sage',
+    category: 'home',
+    hasCalculator: true,
     features: [
       'Regular housekeeping and maintenance cleaning',
       'Deep cleaning for kitchens, bathrooms, and living areas',
@@ -68,53 +72,13 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     ],
   },
   {
-    slug: 'commercial',
-    title: 'Commercial Cleaning',
-    description:
-      'Professional office and workspace cleaning that creates a productive, healthy environment for your team.',
-    accentColor: 'bg-deep',
-    features: [
-      'Daily or weekly office cleaning',
-      'Breakroom and kitchen area cleaning',
-      'Reception and lobby maintenance',
-      'Restroom sanitization',
-    ],
-    included: [
-      'Desk and workstation surface cleaning',
-      'Floor vacuuming and mopping',
-      'Restroom deep cleaning and restocking',
-      'Trash and recycling removal',
-      'Window and glass surface cleaning',
-      'Common area sanitization',
-    ],
-  },
-  {
-    slug: 'hospitality',
-    title: 'Hospitality Cleaning',
-    description:
-      'Specialized cleaning for hotels and hospitality venues that keeps guests coming back.',
-    accentColor: 'bg-cyan',
-    features: [
-      'Hotel room turnover cleaning',
-      'Conference room and meeting space cleaning',
-      'Guest floor hallway and elevator area cleaning',
-      'Common area and lobby cleaning',
-    ],
-    included: [
-      'Linen changing and bed making',
-      'Full bathroom sanitization',
-      'Kitchen and appliance cleaning',
-      'Floor cleaning throughout',
-      'Surface dusting and polishing',
-      'Guest amenity restocking assistance',
-    ],
-  },
-  {
     slug: 'rentals',
     title: 'Rental & Airbnb Cleaning',
     description:
       'Turnover and deep cleaning for Airbnb listings, vacation homes, and rental properties — ready for every guest.',
-    accentColor: 'bg-cyan',
+    accentColor: 'bg-sage',
+    category: 'home',
+    hasCalculator: true,
     features: [
       'Airbnb listing turnover cleaning',
       'Vacation home changeover service',
@@ -135,7 +99,9 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     title: 'Specialty Cleaning',
     description:
       'Targeted deep cleaning services for carpets, couches, sofas, and windows that restore and refresh.',
-    accentColor: 'bg-sky',
+    accentColor: 'bg-sage',
+    category: 'home',
+    hasCalculator: true,
     features: [
       'Carpet deep cleaning and stain removal',
       'Couch and sofa upholstery cleaning',
@@ -152,32 +118,13 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     ],
   },
   {
-    slug: 'events',
-    title: 'Event & Venue Cleaning',
-    description:
-      'Pre-event and post-event cleaning for restaurants, event spaces, and venues of all sizes.',
-    accentColor: 'bg-deep',
-    features: [
-      'Pre-event space preparation',
-      'Post-event deep cleaning',
-      'Restaurant dining area cleaning',
-      'Kitchen and prep area cleaning',
-    ],
-    included: [
-      'Floor sweeping, mopping, and polishing',
-      'Table and chair surface cleaning',
-      'Restroom deep cleaning',
-      'Trash and debris removal',
-      'Bar and counter sanitization',
-      'Window and glass surface cleaning',
-    ],
-  },
-  {
     slug: 'special-services',
     title: 'Special Services',
     description:
       'Decluttering, organizing, and clean-out services that transform overlooked spaces into functional areas.',
-    accentColor: 'bg-sky',
+    accentColor: 'bg-sage',
+    category: 'home',
+    hasCalculator: true,
     features: [
       'Garage clean-outs and organizing',
       'Closet organization and decluttering',
@@ -193,7 +140,86 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
       'Final deep clean of the space',
     ],
   },
+  {
+    slug: 'commercial',
+    title: 'Commercial Cleaning',
+    description:
+      'Professional office and workspace cleaning that creates a productive, healthy environment for your team.',
+    accentColor: 'bg-gold',
+    category: 'commercial',
+    hasCalculator: false,
+    features: [
+      'Daily or weekly office cleaning',
+      'Breakroom and kitchen area cleaning',
+      'Reception and lobby maintenance',
+      'Restroom sanitization',
+    ],
+    included: [
+      'Desk and workstation surface cleaning',
+      'Floor vacuuming and mopping',
+      'Restroom deep cleaning and restocking',
+      'Trash and recycling removal',
+      'Window and glass surface cleaning',
+      'Common area sanitization',
+    ],
+  },
+  {
+    slug: 'hospitality',
+    title: 'Hospitality Cleaning',
+    description:
+      'Specialized cleaning for hotels and hospitality venues that keeps guests coming back.',
+    accentColor: 'bg-gold',
+    category: 'commercial',
+    hasCalculator: false,
+    features: [
+      'Hotel room turnover cleaning',
+      'Conference room and meeting space cleaning',
+      'Guest floor hallway and elevator area cleaning',
+      'Common area and lobby cleaning',
+    ],
+    included: [
+      'Linen changing and bed making',
+      'Full bathroom sanitization',
+      'Kitchen and appliance cleaning',
+      'Floor cleaning throughout',
+      'Surface dusting and polishing',
+      'Guest amenity restocking assistance',
+    ],
+  },
+  {
+    slug: 'events',
+    title: 'Event & Venue Cleaning',
+    description:
+      'Pre-event and post-event cleaning for restaurants, event spaces, and venues of all sizes.',
+    accentColor: 'bg-gold',
+    category: 'commercial',
+    hasCalculator: false,
+    features: [
+      'Pre-event space preparation',
+      'Post-event deep cleaning',
+      'Restaurant dining area cleaning',
+      'Kitchen and prep area cleaning',
+    ],
+    included: [
+      'Floor sweeping, mopping, and polishing',
+      'Table and chair surface cleaning',
+      'Restroom deep cleaning',
+      'Trash and debris removal',
+      'Bar and counter sanitization',
+      'Window and glass surface cleaning',
+    ],
+  },
 ];
+
+export const HOME_SERVICES = SERVICE_CATEGORIES.filter(
+  (s) => s.category === 'home',
+);
+export const COMMERCIAL_SERVICES = SERVICE_CATEGORIES.filter(
+  (s) => s.category === 'commercial',
+);
+export const CALCULATOR_SERVICES = SERVICE_CATEGORIES.filter(
+  (s) => s.hasCalculator,
+);
 
 export const PROCESS_STEPS: ProcessStepData[] = [
   {

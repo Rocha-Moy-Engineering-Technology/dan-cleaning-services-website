@@ -6,6 +6,7 @@ import Button from '../components/ui/Button';
 import QuoteEstimator from '../components/ui/QuoteEstimator';
 import AnimatedSection from '../components/ui/AnimatedSection';
 import { SERVICE_CATEGORIES } from '../logic/content';
+import { ESTIMATOR_CONFIGS } from '../logic/estimator';
 
 export default function ServiceDetail() {
   const { slug } = useParams<{ slug: string }>();
@@ -14,6 +15,8 @@ export default function ServiceDetail() {
   if (!service) {
     return <Navigate to="/services" replace />;
   }
+
+  const estimatorConfig = slug ? ESTIMATOR_CONFIGS[slug] : undefined;
 
   return (
     <>
@@ -61,7 +64,14 @@ export default function ServiceDetail() {
         </AnimatedSection>
       </section>
 
-      {service.slug === 'residential' && <QuoteEstimator />}
+      {estimatorConfig && (
+        <div id="calculator">
+          <QuoteEstimator
+            steps={estimatorConfig.steps}
+            calculateFn={estimatorConfig.calculate}
+          />
+        </div>
+      )}
 
       <section className="bg-forest px-6 py-14 md:py-20 text-center">
         <AnimatedSection>
@@ -75,7 +85,7 @@ export default function ServiceDetail() {
           </p>
           <div className="mt-8">
             <Button variant="gold" href="/contact">
-              Get a Free Quote
+              Get In Touch With Us
             </Button>
           </div>
         </AnimatedSection>

@@ -1,12 +1,20 @@
+import { useState, useRef, useEffect } from 'react';
+import { Link } from 'react-router';
 import { cn } from '../../lib/utils';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import Button from './Button';
+
+interface DropdownItem {
+  label: string;
+  href: string;
+}
 
 interface HeroSectionProps {
   title: string;
   subtitle: string;
   ctaText?: string;
   ctaLink?: string;
+  ctaDropdownItems?: DropdownItem[];
   bgClassName?: string;
   backgroundImage?: string;
 }
@@ -16,15 +24,32 @@ export default function HeroSection({
   subtitle,
   ctaText,
   ctaLink,
+  ctaDropdownItems,
   bgClassName = 'bg-forest',
   backgroundImage,
 }: HeroSectionProps) {
   const hasImage = Boolean(backgroundImage);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!dropdownOpen) return;
+    const handleClick = (e: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setDropdownOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClick);
+    return () => document.removeEventListener('mousedown', handleClick);
+  }, [dropdownOpen]);
+
+  const hasDropdown = ctaText && ctaDropdownItems && ctaDropdownItems.length > 0;
+  const hasSimpleLink = ctaText && ctaLink && !ctaDropdownItems;
 
   return (
     <section
       className={cn(
-        'relative flex flex-col items-center justify-center overflow-hidden px-6 pt-28 pb-20 text-center md:pt-36 md:pb-28',
+        'relative flex flex-col items-center justify-center px-6 pt-28 pb-20 text-center md:pt-36 md:pb-28',
         hasImage
           ? 'min-h-[50vh] md:min-h-[70vh] bg-cover bg-center'
           : bgClassName,
@@ -56,7 +81,8 @@ export default function HeroSection({
         >
           {subtitle}
         </motion.p>
-        {ctaText && ctaLink && (
+
+        {hasSimpleLink && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -64,6 +90,42 @@ export default function HeroSection({
             className="mt-8"
           >
             <Button href={ctaLink}>{ctaText}</Button>
+          </motion.div>
+        )}
+
+        {hasDropdown && (
+          <motion.div
+            ref={dropdownRef}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.3, ease: 'easeOut' }}
+            className="relative mt-8 inline-block"
+          >
+            <Button onClick={() => setDropdownOpen(!dropdownOpen)}>
+              {ctaText}
+            </Button>
+            <AnimatePresence>
+              {dropdownOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: -8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.2 }}
+                  className="absolute left-1/2 -translate-x-1/2 mt-3 w-56 rounded-xl border border-sand/50 bg-white py-2 shadow-lg"
+                >
+                  {ctaDropdownItems.map((item) => (
+                    <Link
+                      key={item.href}
+                      to={item.href}
+                      onClick={() => setDropdownOpen(false)}
+                      className="block px-4 py-2 text-sm text-warm-gray transition-colors hover:bg-cream hover:text-forest"
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
           </motion.div>
         )}
       </div>

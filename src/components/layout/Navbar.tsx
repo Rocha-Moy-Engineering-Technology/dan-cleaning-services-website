@@ -6,11 +6,13 @@ import {
   COMPANY_NAME,
   NAV_LINKS,
   SERVICE_CATEGORIES,
+  CALCULATOR_SERVICES,
 } from '../../logic/content';
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [calculatorOpen, setCalculatorOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
@@ -44,46 +46,107 @@ export default function Navbar() {
 
         {/* Desktop nav */}
         <ul className="hidden items-center gap-8 md:flex">
-          {NAV_LINKS.map((link) =>
-            link.label === 'Services' ? (
-              <li
-                key={link.path}
-                className="relative"
-                onMouseEnter={() => setServicesOpen(true)}
-                onMouseLeave={() => setServicesOpen(false)}
-              >
-                <Link
-                  to={link.path}
-                  className={cn(
-                    'font-medium transition-colors hover:text-gold',
-                    isServicesActive ? 'text-gold' : 'text-white/80',
-                  )}
+          {NAV_LINKS.map((link) => {
+            if (link.label === 'Services') {
+              return (
+                <li
+                  key={link.path}
+                  className="relative"
+                  onMouseEnter={() => setServicesOpen(true)}
+                  onMouseLeave={() => setServicesOpen(false)}
                 >
-                  Services
-                </Link>
-                <AnimatePresence>
-                  {servicesOpen && (
-                    <motion.div
-                      initial={{ opacity: 0, y: -8 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -8 }}
-                      transition={{ duration: 0.2 }}
-                      className="absolute top-full left-0 mt-2 w-56 rounded-xl border border-sand/50 bg-white py-2 shadow-lg"
+                  <Link
+                    to={link.path}
+                    className={cn(
+                      'font-medium transition-colors hover:text-gold',
+                      isServicesActive ? 'text-gold' : 'text-white/80',
+                    )}
+                  >
+                    Services
+                  </Link>
+                  <AnimatePresence>
+                    {servicesOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -8 }}
+                        transition={{ duration: 0.2 }}
+                        className="absolute top-full left-0 mt-2 w-56 rounded-xl border border-sand/50 bg-white py-2 shadow-lg"
+                      >
+                        {SERVICE_CATEGORIES.map((service) => (
+                          <Link
+                            key={service.slug}
+                            to={`/services/${service.slug}`}
+                            className="block px-4 py-2 text-sm text-warm-gray transition-colors hover:bg-cream hover:text-forest"
+                          >
+                            {service.title}
+                          </Link>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </li>
+              );
+            }
+
+            if (link.label === 'Contact') {
+              return (
+                <>
+                  {/* Calculator dropdown */}
+                  <li
+                    key="calculator"
+                    className="relative"
+                    onMouseEnter={() => setCalculatorOpen(true)}
+                    onMouseLeave={() => setCalculatorOpen(false)}
+                  >
+                    <span
+                      className={cn(
+                        'cursor-pointer font-medium transition-colors hover:text-gold',
+                        'text-white/80',
+                      )}
                     >
-                      {SERVICE_CATEGORIES.map((service) => (
-                        <Link
-                          key={service.slug}
-                          to={`/services/${service.slug}`}
-                          className="block px-4 py-2 text-sm text-warm-gray transition-colors hover:bg-cream hover:text-forest"
+                      Calculator
+                    </span>
+                    <AnimatePresence>
+                      {calculatorOpen && (
+                        <motion.div
+                          initial={{ opacity: 0, y: -8 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -8 }}
+                          transition={{ duration: 0.2 }}
+                          className="absolute top-full left-0 mt-2 w-56 rounded-xl border border-sand/50 bg-white py-2 shadow-lg"
                         >
-                          {service.title}
-                        </Link>
-                      ))}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </li>
-            ) : (
+                          {CALCULATOR_SERVICES.map((service) => (
+                            <Link
+                              key={service.slug}
+                              to={`/services/${service.slug}#calculator`}
+                              className="block px-4 py-2 text-sm text-warm-gray transition-colors hover:bg-cream hover:text-forest"
+                            >
+                              {service.title}
+                            </Link>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </li>
+
+                  {/* Contact link */}
+                  <li key={link.path}>
+                    <Link
+                      to={link.path}
+                      className={cn(
+                        'font-medium transition-colors hover:text-gold',
+                        isActive(link.path) ? 'text-gold' : 'text-white/80',
+                      )}
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                </>
+              );
+            }
+
+            return (
               <li key={link.path}>
                 <Link
                   to={link.path}
@@ -95,8 +158,8 @@ export default function Navbar() {
                   {link.label}
                 </Link>
               </li>
-            ),
-          )}
+            );
+          })}
         </ul>
 
         {/* Mobile hamburger */}
@@ -169,6 +232,25 @@ export default function Navbar() {
                   )}
                 </li>
               ))}
+              {/* Calculator in mobile */}
+              <li>
+                <span className="block font-medium text-white/80">
+                  Calculator
+                </span>
+                <ul className="ml-4 mt-2 space-y-2">
+                  {CALCULATOR_SERVICES.map((service) => (
+                    <li key={service.slug}>
+                      <Link
+                        to={`/services/${service.slug}#calculator`}
+                        onClick={() => setMobileOpen(false)}
+                        className="block text-sm text-white/60 transition-colors hover:text-gold"
+                      >
+                        {service.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </li>
             </ul>
           </motion.div>
         )}

@@ -7,9 +7,16 @@ import AnimatedSection from '../components/ui/AnimatedSection';
 import {
   HERO,
   VALUE_PROPOSITIONS,
-  SERVICE_CATEGORIES,
+  HOME_SERVICES,
+  COMMERCIAL_SERVICES,
+  CALCULATOR_SERVICES,
   PROCESS_STEPS,
 } from '../logic/content';
+
+const CALCULATOR_DROPDOWN = CALCULATOR_SERVICES.map((s) => ({
+  label: s.title,
+  href: `/services/${s.slug}#calculator`,
+}));
 
 export default function Home() {
   return (
@@ -18,20 +25,37 @@ export default function Home() {
         title={HERO.title}
         subtitle={HERO.subtitle}
         ctaText={HERO.ctaText}
-        ctaLink={HERO.ctaLink}
+        ctaDropdownItems={CALCULATOR_DROPDOWN}
         backgroundImage={`${import.meta.env.BASE_URL}images/hero-charleston.jpg`}
       />
 
-      {/* Services */}
+      {/* Home & Personal Services */}
       <section className="px-6 py-16 md:py-24">
         <AnimatedSection>
           <SectionHeading
-            title="Services"
-            subtitle="From residential homes to commercial venues, we have you covered."
+            title="Home & Personal Services"
+            subtitle="Instant quotes available — get your estimate in seconds."
           />
         </AnimatedSection>
-        <div className="mx-auto grid max-w-5xl gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {SERVICE_CATEGORIES.map((service, i) => (
+        <div className="mx-auto grid max-w-5xl gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {HOME_SERVICES.map((service, i) => (
+            <AnimatedSection key={service.slug} delay={i * 0.08}>
+              <ServiceCategoryCard service={service} />
+            </AnimatedSection>
+          ))}
+        </div>
+      </section>
+
+      {/* Commercial & Corporate Services */}
+      <section className="bg-sand/40 px-6 py-16 md:py-24">
+        <AnimatedSection>
+          <SectionHeading
+            title="Commercial & Corporate"
+            subtitle="Tailored solutions for your business — contact us for a custom quote."
+          />
+        </AnimatedSection>
+        <div className="mx-auto grid max-w-5xl gap-6 sm:grid-cols-3">
+          {COMMERCIAL_SERVICES.map((service, i) => (
             <AnimatedSection key={service.slug} delay={i * 0.08}>
               <ServiceCategoryCard service={service} />
             </AnimatedSection>
@@ -57,7 +81,7 @@ export default function Home() {
       </section>
 
       {/* Value Propositions */}
-      <section className="relative bg-sand/40 px-6 py-16 md:py-24">
+      <section className="relative px-6 py-16 md:py-24">
         <AnimatedSection>
           <SectionHeading
             title="Why Choose Us"
@@ -89,12 +113,13 @@ export default function Home() {
           </h2>
           <span className="block mx-auto mt-4 h-0.5 w-12 rounded-full bg-gold/70" />
           <p className="mx-auto mt-6 max-w-xl text-lg text-white/80">
-            Contact us today for a free, no-obligation quote. We would love to
-            hear from you.
+            Contact us today for a free, no-obligation quote.
+            <br />
+            We&rsquo;d love to hear from you.
           </p>
           <div className="mt-8">
             <Button variant="gold" href="/contact">
-              Get Your Free Quote
+              Get In Touch With Us
             </Button>
           </div>
         </AnimatedSection>

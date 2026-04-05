@@ -1,5 +1,5 @@
 export interface EstimatorStepConfig {
-  id: EstimatorStepId;
+  id: string;
   title: string;
   options: EstimatorOption[];
 }
@@ -9,6 +9,7 @@ export interface EstimatorOption {
   value: string;
 }
 
+/** Residential-specific selections (kept for backward compat with tests) */
 export interface EstimatorSelections {
   bedrooms: string;
   bathrooms: string;
@@ -22,4 +23,13 @@ export interface EstimatorResult {
   high: number;
 }
 
-export type EstimatorStepId = keyof EstimatorSelections;
+/** Generic calculate function signature */
+export type CalculateFn = (
+  selections: Record<string, string>,
+) => EstimatorResult;
+
+/** Full estimator configuration for a service */
+export interface EstimatorConfig {
+  steps: EstimatorStepConfig[];
+  calculate: CalculateFn;
+}
