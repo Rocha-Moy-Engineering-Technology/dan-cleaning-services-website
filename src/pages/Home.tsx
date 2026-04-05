@@ -22,36 +22,11 @@ export default function Home() {
         backgroundImage={`${import.meta.env.BASE_URL}images/hero-charleston.jpg`}
       />
 
-      {/* Value Propositions */}
-      <section className="relative bg-sand/40 px-6 py-16 md:py-24">
-        <AnimatedSection>
-          <SectionHeading
-            title="Why Choose Us"
-            subtitle="We go above and beyond to deliver an exceptional cleaning experience."
-          />
-        </AnimatedSection>
-        <div className="mx-auto grid max-w-5xl gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {VALUE_PROPOSITIONS.map((vp, i) => (
-            <AnimatedSection key={vp.title} delay={i * 0.1}>
-              <div className="text-center">
-                <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-sage/20 text-3xl">
-                  {vp.icon}
-                </div>
-                <h3 className="font-heading mt-4 text-lg font-semibold text-charcoal">
-                  {vp.title}
-                </h3>
-                <p className="mt-2 text-sm text-warm-gray">{vp.description}</p>
-              </div>
-            </AnimatedSection>
-          ))}
-        </div>
-      </section>
-
       {/* Services */}
       <section className="px-6 py-16 md:py-24">
         <AnimatedSection>
           <SectionHeading
-            title="Our Services"
+            title="Services"
             subtitle="From residential homes to commercial venues, we have you covered."
           />
         </AnimatedSection>
@@ -98,6 +73,31 @@ export default function Home() {
             </Button>
           </div>
         </AnimatedSection>
+      </section>
+
+      {/* Value Propositions */}
+      <section className="relative bg-sand/40 px-6 py-16 md:py-24">
+        <AnimatedSection>
+          <SectionHeading
+            title="Why Choose Us"
+            subtitle="We go above and beyond to deliver an exceptional cleaning experience."
+          />
+        </AnimatedSection>
+        <div className="mx-auto grid max-w-5xl gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          {VALUE_PROPOSITIONS.map((vp, i) => (
+            <AnimatedSection key={vp.title} delay={i * 0.1}>
+              <div className="text-center">
+                <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-sage/20 text-3xl">
+                  {vp.icon}
+                </div>
+                <h3 className="font-heading mt-4 text-lg font-semibold text-charcoal">
+                  {vp.title}
+                </h3>
+                <p className="mt-2 text-sm text-warm-gray">{vp.description}</p>
+              </div>
+            </AnimatedSection>
+          ))}
+        </div>
       </section>
     </>
   );
