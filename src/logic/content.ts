@@ -21,7 +21,7 @@ export const VALUE_PROPOSITIONS: ValueProposition[] = [
   {
     title: 'Trusted Professionals',
     description:
-      'Our team is fully vetted, trained, and committed to delivering exceptional results every time.',
+      'Our team is trained and committed to delivering exceptional results.',
     icon: '🛡️',
   },
   {

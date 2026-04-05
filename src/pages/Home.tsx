@@ -29,11 +29,11 @@ export default function Home() {
         backgroundImage={`${import.meta.env.BASE_URL}images/hero-charleston.jpg`}
       />
 
-      {/* Home, Personal Services & Small Businesses */}
+      {/* Residential & Small Business Services */}
       <section className="px-6 py-16 md:py-24">
         <AnimatedSection>
           <SectionHeading
-            title="Home, Personal Services & Small Businesses"
+            title="Residential & Small Business Services"
             subtitle="Instant quotes available — get your estimate in seconds."
           />
         </AnimatedSection>

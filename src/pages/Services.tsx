@@ -17,7 +17,7 @@ export default function Services() {
       <section className="px-6 py-16 md:py-24">
         <AnimatedSection>
           <SectionHeading
-            title="Home, Personal Services & Small Businesses"
+            title="Residential & Small Business Services"
             subtitle="Instant quotes available — get your estimate in seconds."
           />
         </AnimatedSection>
