@@ -10,7 +10,7 @@ export const COMPANY_NAME = 'Harbor Point Cleaning';
 export const WEB3FORMS_ACCESS_KEY = 'e5cc09c0-15c5-4c1c-9c13-961382817e04';
 
 export const HERO = {
-  title: 'Your Premier Cleaning Solution',
+  title: 'Premier Cleaning Solutions',
   subtitle:
     'Professional cleaning services for homes, offices, and commercial spaces. We bring spotless results with personalized care.',
   ctaText: 'Get a Free Quote',

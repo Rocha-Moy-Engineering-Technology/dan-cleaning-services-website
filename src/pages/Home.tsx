@@ -22,24 +22,6 @@ export default function Home() {
         backgroundImage={`${import.meta.env.BASE_URL}images/hero-charleston.jpg`}
       />
 
-      {/* Company Description */}
-      <section className="px-6 py-16 md:py-24">
-        <AnimatedSection>
-          <div className="mx-auto max-w-3xl text-center">
-            <h2 className="font-heading text-3xl font-semibold text-charcoal md:text-4xl">
-              A Cleaner Space, A Better Life
-            </h2>
-            <span className="block mx-auto mt-4 h-0.5 w-12 rounded-full bg-gold" />
-            <p className="mt-6 text-lg leading-relaxed text-warm-gray">
-              At Harbor Point Cleaning, we understand that a clean environment is
-              more than just a luxury &mdash; it is essential for your health,
-              productivity, and peace of mind. Our dedicated team brings
-              professionalism, care, and attention to detail to every job.
-            </p>
-          </div>
-        </AnimatedSection>
-      </section>
-
       {/* Value Propositions */}
       <section className="relative bg-sand/40 px-6 py-16 md:py-24">
         <AnimatedSection>
