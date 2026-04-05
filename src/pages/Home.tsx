@@ -56,25 +56,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="bg-forest px-6 py-16 md:py-24 text-center">
-        <AnimatedSection>
-          <h2 className="font-heading text-3xl font-semibold text-white md:text-4xl lg:text-5xl">
-            Ready for a Spotless Space?
-          </h2>
-          <span className="block mx-auto mt-4 h-0.5 w-12 rounded-full bg-gold/70" />
-          <p className="mx-auto mt-6 max-w-xl text-lg text-white/80">
-            Contact us today for a free, no-obligation quote. We would love to
-            hear from you.
-          </p>
-          <div className="mt-8">
-            <Button variant="gold" href="/contact">
-              Get Your Free Quote
-            </Button>
-          </div>
-        </AnimatedSection>
-      </section>
-
       {/* Value Propositions */}
       <section className="relative bg-sand/40 px-6 py-16 md:py-24">
         <AnimatedSection>
@@ -98,6 +79,25 @@ export default function Home() {
             </AnimatedSection>
           ))}
         </div>
+      </section>
+
+      {/* CTA */}
+      <section className="bg-forest px-6 py-16 md:py-24 text-center">
+        <AnimatedSection>
+          <h2 className="font-heading text-3xl font-semibold text-white md:text-4xl lg:text-5xl">
+            Ready for a Spotless Space?
+          </h2>
+          <span className="block mx-auto mt-4 h-0.5 w-12 rounded-full bg-gold/70" />
+          <p className="mx-auto mt-6 max-w-xl text-lg text-white/80">
+            Contact us today for a free, no-obligation quote. We would love to
+            hear from you.
+          </p>
+          <div className="mt-8">
+            <Button variant="gold" href="/contact">
+              Get Your Free Quote
+            </Button>
+          </div>
+        </AnimatedSection>
       </section>
     </>
   );
