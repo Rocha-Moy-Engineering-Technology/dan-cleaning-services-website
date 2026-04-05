@@ -133,11 +133,11 @@ export const RESIDENTIAL_CONFIG: EstimatorConfig = {
 // ---------------------------------------------------------------------------
 
 const RENTAL_PROPERTY_PRICING: Record<string, EstimatorResult> = {
-  studio: { low: 80, high: 100 },
-  '1-bedroom': { low: 100, high: 130 },
-  '2-bedroom': { low: 130, high: 170 },
-  '3-bedroom': { low: 170, high: 220 },
-  '4-plus': { low: 220, high: 280 },
+  studio: { low: 120, high: 150 },
+  '1-bedroom': { low: 150, high: 190 },
+  '2-bedroom': { low: 190, high: 240 },
+  '3-bedroom': { low: 240, high: 300 },
+  '4-plus': { low: 300, high: 370 },
 };
 
 const RENTAL_BATHROOM_ADDON = { low: 20, high: 25 };
@@ -189,11 +189,10 @@ const RENTAL_STEPS: EstimatorStepConfig[] = [
   {
     id: 'extras',
     title: 'Any extras?',
+    multiSelect: true,
     options: [
-      { label: 'None', value: 'none' },
       { label: 'Linen Change & Bed Making', value: 'linen' },
       { label: 'Amenity Restocking Assist', value: 'restock' },
-      { label: 'Linen + Restocking', value: 'linen-restock' },
     ],
   },
   {
@@ -227,14 +226,19 @@ function calculateRentalEstimate(
   high *= multiplier;
 
   const extrasAddon: Record<string, EstimatorResult> = {
-    none: { low: 0, high: 0 },
     linen: { low: 25, high: 35 },
     restock: { low: 20, high: 30 },
-    'linen-restock': { low: 40, high: 55 },
   };
-  const extras = extrasAddon[selections.extras] ?? { low: 0, high: 0 };
-  low += extras.low;
-  high += extras.high;
+  const selectedExtras = selections.extras
+    ? selections.extras.split(',').filter(Boolean)
+    : [];
+  for (const extra of selectedExtras) {
+    const addon = extrasAddon[extra];
+    if (addon) {
+      low += addon.low;
+      high += addon.high;
+    }
+  }
 
   const discount = RENTAL_FREQUENCY_DISCOUNTS[selections.frequency] ?? 0;
   low = Math.round(low * (1 - discount));

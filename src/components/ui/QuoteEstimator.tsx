@@ -32,8 +32,27 @@ export default function QuoteEstimator({
   const isComplete = currentStep >= totalSteps;
 
   function handleSelect(value: string) {
-    const stepId = steps[currentStep].id;
+    const step = steps[currentStep];
+    const stepId = step.id;
+
+    if (step.multiSelect) {
+      setSelections((prev) => {
+        const current = prev[stepId];
+        const values = current ? current.split(',') : [];
+        const updated = values.includes(value)
+          ? values.filter((v) => v !== value)
+          : [...values, value];
+        return { ...prev, [stepId]: updated.join(',') };
+      });
+      return;
+    }
+
     setSelections((prev) => ({ ...prev, [stepId]: value }));
+    setDirection(1);
+    setCurrentStep((prev) => prev + 1);
+  }
+
+  function handleContinue() {
     setDirection(1);
     setCurrentStep((prev) => prev + 1);
   }
@@ -100,13 +119,18 @@ export default function QuoteEstimator({
                     selectedValue={selections[steps[currentStep].id]}
                     onSelect={handleSelect}
                   />
-                  {currentStep > 0 && (
-                    <div className="mt-6 text-center">
+                  <div className="mt-6 flex justify-center gap-3">
+                    {currentStep > 0 && (
                       <Button variant="outline" onClick={handleBack}>
                         Back
                       </Button>
-                    </div>
-                  )}
+                    )}
+                    {steps[currentStep].multiSelect && (
+                      <Button onClick={handleContinue}>
+                        Continue
+                      </Button>
+                    )}
+                  </div>
                 </>
               )}
             </motion.div>

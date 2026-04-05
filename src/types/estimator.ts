@@ -2,6 +2,7 @@ export interface EstimatorStepConfig {
   id: string;
   title: string;
   options: EstimatorOption[];
+  multiSelect?: boolean;
 }
 
 export interface EstimatorOption {
