@@ -1,6 +1,5 @@
 import type {
   EstimatorStepConfig,
-  EstimatorSelections,
   EstimatorResult,
   EstimatorConfig,
 } from '../types/estimator';
@@ -97,7 +96,7 @@ export const ESTIMATOR_STEPS: EstimatorStepConfig[] = [
 ];
 
 export function calculateEstimate(
-  selections: EstimatorSelections,
+  selections: Record<string, string>,
 ): EstimatorResult {
   const base = SQFT_BASE_PRICING[selections.squareFootage];
 
@@ -126,9 +125,7 @@ export function calculateEstimate(
 
 export const RESIDENTIAL_CONFIG: EstimatorConfig = {
   steps: ESTIMATOR_STEPS,
-  calculate: calculateEstimate as (
-    s: Record<string, string>,
-  ) => EstimatorResult,
+  calculate: calculateEstimate,
 };
 
 // ---------------------------------------------------------------------------

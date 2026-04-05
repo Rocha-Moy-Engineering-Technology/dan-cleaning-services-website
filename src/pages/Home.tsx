@@ -68,10 +68,10 @@ export default function Home() {
         <AnimatedSection>
           <SectionHeading
             title="How It Works"
-            subtitle="Getting started is simple. Here is our easy four-step process."
+            subtitle="Getting started is simple."
           />
         </AnimatedSection>
-        <div className="mx-auto grid max-w-4xl gap-8 md:gap-10 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mx-auto grid max-w-2xl gap-8 md:gap-10 sm:grid-cols-2">
           {PROCESS_STEPS.map((step, i) => (
             <AnimatedSection key={step.number} delay={i * 0.12}>
               <ProcessStep step={step} />

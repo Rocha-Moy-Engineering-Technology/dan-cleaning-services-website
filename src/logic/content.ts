@@ -25,12 +25,6 @@ export const VALUE_PROPOSITIONS: ValueProposition[] = [
     icon: '🛡️',
   },
   {
-    title: 'Eco-Friendly Products',
-    description:
-      'We use safe, non-industrial cleaning products that are effective and gentle on your space.',
-    icon: '🌿',
-  },
-  {
     title: 'Flexible Scheduling',
     description:
       'Book one-time deep cleans or recurring services that fit your schedule perfectly.',
@@ -224,27 +218,15 @@ export const CALCULATOR_SERVICES = SERVICE_CATEGORIES.filter(
 export const PROCESS_STEPS: ProcessStepData[] = [
   {
     number: 1,
-    title: 'Request a Quote',
+    title: 'Get Your Estimate',
     description:
-      'Tell us about your space and cleaning needs through our contact form or by phone.',
+      'Use our online calculators to estimate the cost for home and personal services, or get in touch with us to request a quote for commercial and corporate services.',
   },
   {
     number: 2,
-    title: 'Get Your Plan',
+    title: 'Schedule Your Cleaning',
     description:
-      'We create a customized cleaning plan and transparent pricing tailored to your requirements.',
-  },
-  {
-    number: 3,
-    title: 'We Clean',
-    description:
-      'Our professional team arrives on schedule and delivers a thorough, detailed clean.',
-  },
-  {
-    number: 4,
-    title: 'Enjoy Your Space',
-    description:
-      'Relax in your spotless environment. We follow up to ensure your complete satisfaction.',
+      'Contact us to book your cleaning at a time that works for you. Our professional team will arrive on schedule and deliver a thorough, detailed clean.',
   },
 ];
 
