@@ -29,11 +29,11 @@ export default function Home() {
         backgroundImage={`${import.meta.env.BASE_URL}images/hero-charleston.jpg`}
       />
 
-      {/* Home & Personal Services */}
+      {/* Home, Personal Services & Small Businesses */}
       <section className="px-6 py-16 md:py-24">
         <AnimatedSection>
           <SectionHeading
-            title="Home & Personal Services"
+            title="Home, Personal Services & Small Businesses"
             subtitle="Instant quotes available — get your estimate in seconds."
           />
         </AnimatedSection>
@@ -88,7 +88,7 @@ export default function Home() {
             subtitle="We go above and beyond to deliver an exceptional cleaning experience."
           />
         </AnimatedSection>
-        <div className="mx-auto grid max-w-5xl gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mx-auto grid max-w-4xl gap-8 sm:grid-cols-3">
           {VALUE_PROPOSITIONS.map((vp, i) => (
             <AnimatedSection key={vp.title} delay={i * 0.1}>
               <div className="text-center">
