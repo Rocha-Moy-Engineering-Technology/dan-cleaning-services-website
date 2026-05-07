@@ -60,102 +60,115 @@ function makeSpecialSelections(
 
 describe('calculateEstimate', () => {
   describe('base pricing by square footage', () => {
-    it('returns $120-$150 for under 1000 sqft', () => {
+    it('returns $90-$120 for under 1000 sqft', () => {
       const result = calculateEstimate(
         makeSelections({ squareFootage: 'under-1000' })
       );
-      expect(result).toEqual({ low: 120, high: 150 });
+      expect(result).toEqual({ low: 90, high: 120 });
     });
 
-    it('returns $150-$190 for 1000-1500 sqft', () => {
+    it('returns $120-$160 for 1000-1500 sqft', () => {
       const result = calculateEstimate(
         makeSelections({ squareFootage: '1000-1500' })
       );
-      expect(result).toEqual({ low: 150, high: 190 });
+      expect(result).toEqual({ low: 120, high: 160 });
     });
 
-    it('returns $190-$240 for 1500-2000 sqft', () => {
+    it('returns $160-$210 for 1500-2000 sqft', () => {
       const result = calculateEstimate(
         makeSelections({ squareFootage: '1500-2000' })
       );
-      expect(result).toEqual({ low: 190, high: 240 });
+      expect(result).toEqual({ low: 160, high: 210 });
     });
 
-    it('returns $240-$300 for 2000-2500 sqft', () => {
+    it('returns $210-$270 for 2000-2500 sqft', () => {
       const result = calculateEstimate(
         makeSelections({ squareFootage: '2000-2500' })
       );
-      expect(result).toEqual({ low: 240, high: 300 });
+      expect(result).toEqual({ low: 210, high: 270 });
     });
 
-    it('returns $300-$370 for 2500-3000 sqft', () => {
+    it('returns $270-$340 for 2500-3000 sqft', () => {
       const result = calculateEstimate(
         makeSelections({ squareFootage: '2500-3000' })
       );
-      expect(result).toEqual({ low: 300, high: 370 });
+      expect(result).toEqual({ low: 270, high: 340 });
     });
 
-    it('returns $370-$450 for 3000+ sqft', () => {
+    it('returns $340-$430 for 3000+ sqft', () => {
       const result = calculateEstimate(
         makeSelections({ squareFootage: '3000-plus' })
       );
-      expect(result).toEqual({ low: 370, high: 450 });
+      expect(result).toEqual({ low: 340, high: 430 });
     });
   });
 
   describe('bedroom addons', () => {
     it('adds nothing for 1 bedroom', () => {
       const result = calculateEstimate(makeSelections({ bedrooms: '1' }));
-      expect(result).toEqual({ low: 120, high: 150 });
+      expect(result).toEqual({ low: 90, high: 120 });
     });
 
-    it('adds $15/$20 per extra bedroom', () => {
+    it('adds nothing for 2 bedrooms', () => {
+      const result = calculateEstimate(makeSelections({ bedrooms: '2' }));
+      expect(result).toEqual({ low: 90, high: 120 });
+    });
+
+    it('adds $5/$10 per extra bedroom beyond 2', () => {
       const result = calculateEstimate(makeSelections({ bedrooms: '3' }));
-      expect(result).toEqual({ low: 120 + 30, high: 150 + 40 });
+      expect(result).toEqual({ low: 90 + 5, high: 120 + 10 });
     });
 
-    it('handles 6+ bedrooms (5 extra)', () => {
+    it('handles 6+ bedrooms (4 extra)', () => {
       const result = calculateEstimate(makeSelections({ bedrooms: '6' }));
-      expect(result).toEqual({ low: 120 + 75, high: 150 + 100 });
+      expect(result).toEqual({ low: 90 + 20, high: 120 + 40 });
     });
   });
 
   describe('bathroom addons', () => {
     it('adds nothing for 1 bathroom', () => {
       const result = calculateEstimate(makeSelections({ bathrooms: '1' }));
-      expect(result).toEqual({ low: 120, high: 150 });
+      expect(result).toEqual({ low: 90, high: 120 });
     });
 
-    it('adds $20/$25 per extra bathroom', () => {
+    it('adds nothing for 2 bathrooms', () => {
+      const result = calculateEstimate(makeSelections({ bathrooms: '2' }));
+      expect(result).toEqual({ low: 90, high: 120 });
+    });
+
+    it('adds $10/$15 per extra bathroom beyond 2', () => {
       const result = calculateEstimate(makeSelections({ bathrooms: '3' }));
-      expect(result).toEqual({ low: 120 + 40, high: 150 + 50 });
+      expect(result).toEqual({ low: 90 + 10, high: 120 + 15 });
     });
 
-    it('handles 5+ bathrooms (4 extra)', () => {
+    it('handles 5+ bathrooms (3 extra)', () => {
       const result = calculateEstimate(makeSelections({ bathrooms: '5' }));
-      expect(result).toEqual({ low: 120 + 80, high: 150 + 100 });
+      expect(result).toEqual({ low: 90 + 30, high: 120 + 45 });
     });
   });
 
   describe('deep clean multiplier', () => {
-    it('applies 1.5x for deep cleaning', () => {
+    it('applies 1.67x for deep cleaning', () => {
       const result = calculateEstimate(
         makeSelections({ cleaningType: 'deep' })
       );
-      expect(result).toEqual({ low: 180, high: 225 });
+      expect(result).toEqual({
+        low: Math.round(90 * 1.67),
+        high: Math.round(120 * 1.67),
+      });
     });
 
     it('applies multiplier after bedroom/bathroom addons', () => {
       const result = calculateEstimate(
         makeSelections({
-          bedrooms: '2',
-          bathrooms: '2',
+          bedrooms: '4',
+          bathrooms: '3',
           cleaningType: 'deep',
         })
       );
       expect(result).toEqual({
-        low: Math.round((120 + 15 + 20) * 1.5),
-        high: Math.round((150 + 20 + 25) * 1.5),
+        low: Math.round((90 + 2 * 5 + 1 * 10) * 1.67),
+        high: Math.round((120 + 2 * 10 + 1 * 15) * 1.67),
       });
     });
   });
@@ -165,14 +178,14 @@ describe('calculateEstimate', () => {
       const result = calculateEstimate(
         makeSelections({ frequency: 'one-time' })
       );
-      expect(result).toEqual({ low: 120, high: 150 });
+      expect(result).toEqual({ low: 90, high: 120 });
     });
 
     it('15% off for weekly', () => {
       const result = calculateEstimate(makeSelections({ frequency: 'weekly' }));
       expect(result).toEqual({
-        low: Math.round(120 * 0.85),
-        high: Math.round(150 * 0.85),
+        low: Math.round(90 * 0.85),
+        high: Math.round(120 * 0.85),
       });
     });
 
@@ -181,8 +194,8 @@ describe('calculateEstimate', () => {
         makeSelections({ frequency: 'bi-weekly' })
       );
       expect(result).toEqual({
-        low: Math.round(120 * 0.9),
-        high: Math.round(150 * 0.9),
+        low: Math.round(90 * 0.9),
+        high: Math.round(120 * 0.9),
       });
     });
 
@@ -191,8 +204,8 @@ describe('calculateEstimate', () => {
         makeSelections({ frequency: 'monthly' })
       );
       expect(result).toEqual({
-        low: Math.round(120 * 0.95),
-        high: Math.round(150 * 0.95),
+        low: Math.round(90 * 0.95),
+        high: Math.round(120 * 0.95),
       });
     });
 
@@ -201,9 +214,41 @@ describe('calculateEstimate', () => {
         makeSelections({ cleaningType: 'deep', frequency: 'weekly' })
       );
       expect(result).toEqual({
-        low: Math.round(180 * 0.85),
-        high: Math.round(225 * 0.85),
+        low: Math.round(90 * 1.67 * 0.85),
+        high: Math.round(120 * 1.67 * 0.85),
       });
+    });
+  });
+
+  describe("matches Dan's pricing anchors", () => {
+    it("anchors 5bd/4ba/1500 sqft standard near $180 (Dan's quote)", () => {
+      const result = calculateEstimate(
+        makeSelections({
+          bedrooms: '5',
+          bathrooms: '4',
+          squareFootage: '1000-1500',
+          cleaningType: 'standard',
+          frequency: 'one-time',
+        })
+      );
+      const midpoint = (result.low + result.high) / 2;
+      expect(midpoint).toBeGreaterThanOrEqual(144);
+      expect(midpoint).toBeLessThanOrEqual(216);
+    });
+
+    it("anchors 5bd/4ba/1500 sqft deep near $300 (Dan's quote)", () => {
+      const result = calculateEstimate(
+        makeSelections({
+          bedrooms: '5',
+          bathrooms: '4',
+          squareFootage: '1000-1500',
+          cleaningType: 'deep',
+          frequency: 'one-time',
+        })
+      );
+      const midpoint = (result.low + result.high) / 2;
+      expect(midpoint).toBeGreaterThanOrEqual(240);
+      expect(midpoint).toBeLessThanOrEqual(360);
     });
   });
 
@@ -218,11 +263,11 @@ describe('calculateEstimate', () => {
           frequency: 'weekly',
         })
       );
-      const baseLow = 300 + 3 * 15 + 2 * 20;
-      const baseHigh = 370 + 3 * 20 + 2 * 25;
+      const baseLow = 270 + 2 * 5 + 1 * 10;
+      const baseHigh = 340 + 2 * 10 + 1 * 15;
       expect(result).toEqual({
-        low: Math.round(baseLow * 1.5 * 0.85),
-        high: Math.round(baseHigh * 1.5 * 0.85),
+        low: Math.round(baseLow * 1.67 * 0.85),
+        high: Math.round(baseHigh * 1.67 * 0.85),
       });
     });
   });

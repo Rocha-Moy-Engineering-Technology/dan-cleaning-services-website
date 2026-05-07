@@ -9,19 +9,19 @@ import type {
 // ---------------------------------------------------------------------------
 
 const SQFT_BASE_PRICING: Record<string, EstimatorResult> = {
-  'under-1000': { low: 120, high: 150 },
-  '1000-1500': { low: 150, high: 190 },
-  '1500-2000': { low: 190, high: 240 },
-  '2000-2500': { low: 240, high: 300 },
-  '2500-3000': { low: 300, high: 370 },
-  '3000-plus': { low: 370, high: 450 },
+  'under-1000': { low: 90, high: 120 },
+  '1000-1500': { low: 120, high: 160 },
+  '1500-2000': { low: 160, high: 210 },
+  '2000-2500': { low: 210, high: 270 },
+  '2500-3000': { low: 270, high: 340 },
+  '3000-plus': { low: 340, high: 430 },
 };
 
-const BEDROOM_ADDON = { low: 15, high: 20 };
-const BATHROOM_ADDON = { low: 20, high: 25 };
-const DEEP_CLEAN_MULTIPLIER = 1.5;
-const MOVE_IN_OUT_MULTIPLIER = 1.75;
-const POST_RENOVATION_MULTIPLIER = 2.0;
+const BEDROOM_ADDON = { low: 5, high: 10 };
+const BATHROOM_ADDON = { low: 10, high: 15 };
+const DEEP_CLEAN_MULTIPLIER = 1.67;
+const MOVE_IN_OUT_MULTIPLIER = 1.85;
+const POST_RENOVATION_MULTIPLIER = 2.2;
 
 const FREQUENCY_DISCOUNTS: Record<string, number> = {
   'one-time': 0,
@@ -100,8 +100,8 @@ export function calculateEstimate(
 ): EstimatorResult {
   const base = SQFT_BASE_PRICING[selections.squareFootage];
 
-  const extraBedrooms = Math.max(0, parseInt(selections.bedrooms, 10) - 1);
-  const extraBathrooms = Math.max(0, parseInt(selections.bathrooms, 10) - 1);
+  const extraBedrooms = Math.max(0, parseInt(selections.bedrooms, 10) - 2);
+  const extraBathrooms = Math.max(0, parseInt(selections.bathrooms, 10) - 2);
 
   let low =
     base.low +
